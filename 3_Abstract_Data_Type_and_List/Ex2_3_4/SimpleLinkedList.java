@@ -1,8 +1,31 @@
 package Hw3_22000081_NguyenTienDat.Ex2_3_4;
 import java.util.LinkedList;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class SimpleLinkedList<T> implements ListInterface<T> {
+    @Override
+    public Iterator<T> iterator() {
+        return new Iterator<T>() {
+            private Node current = top;  // Node hiện tại để duyệt qua danh sách
+
+            @Override
+            public boolean hasNext() {
+                return current != null;  // Kiểm tra xem còn phần tử nào không
+            }
+
+            @Override
+            public T next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();  // Ném ngoại lệ nếu không còn phần tử
+                }
+                T data = current.data;  // Lưu lại dữ liệu của node hiện tại
+                current = current.next;  // Chuyển sang node tiếp theo
+                return data;
+            }
+        };
+    }
+
     class Node {
         T data ;
         Node next ;
@@ -59,7 +82,7 @@ public class SimpleLinkedList<T> implements ListInterface<T> {
         current.data = data;
     }
 
-    public boolean isConstrain(T data) {
+    public boolean isContain(T data) {
         Node currentNode = top;
         for (int i = 0; i < n; i++) {
             if (currentNode.data.equals(data)) {

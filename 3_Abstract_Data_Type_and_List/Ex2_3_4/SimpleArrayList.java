@@ -1,21 +1,17 @@
 package Hw3_22000081_NguyenTienDat.Ex2_3_4;
-import java.util.Arrays;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class SimpleArrayList<T> implements ListInterface<T> {
     private T[] array;
     private int n = 0;
     private int defaultSize = 100;
 
-    public SimpleArrayList() {
-        array = (T[]) new Object(defaultSize);
-    }
-
-    public SimpleArrayList(int capacity){
-        if (capacity <= 0) {
+    public SimpleArrayList(){
+        if (n <= 0) {
             throw new IllegalArgumentException("Capacity must be greater than 0");
         }
-        array = (T[]) new Object[capacity];
+        array = (T[]) new Object[n];
     }
 
     public void resize() {
@@ -68,6 +64,17 @@ public class SimpleArrayList<T> implements ListInterface<T> {
 
     public int size() {
         return n;
+    }
+
+    public int indexOf(T data){
+        if (isContain(data)) {
+            for (int i = 0; i < n; i++) {
+                if (array[i].equals(data)){
+                    return i;
+                }
+            }
+        }
+        return -1;
     }
 
     public boolean isEmpty() {
