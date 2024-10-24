@@ -1,0 +1,11 @@
+Insert times (in milliseconds):
+PriorityQueue type 0: [0]
+PriorityQueue type 1: [8]
+PriorityQueue type 2: [1]
+PriorityQueue type 3: [7]
+
+RemoveMin times (in milliseconds):
+PriorityQueue type 0: [10]
+PriorityQueue type 1: [0]
+PriorityQueue type 2: [11]
+PriorityQueue type 3: [0]
